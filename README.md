@@ -48,11 +48,61 @@ Add a **total expenses summary** feature that displays the total amount spent ac
 ### Getting Started
 
 1. Clone this repository
-2. Run the Python script
+2. Run the application:
+   ```bash
+   python3 expense_tracker.py
+   ```
 3. Follow the menu prompts to manage your expenses
 4. Expenses will be automatically saved to `expenses.csv`
+
+### Running Tests
+
+Run the comprehensive test suite to verify all functionality:
+```bash
+python3 test_expense_tracker.py
+```
+
+All 13 tests should pass! ✅
+
+### Project Files
+
+- **`expense_tracker.py`** - Main application (recommended)
+- **`expense_func.py`** - Core functions for expense management
+- **`test_expense_tracker.py`** - Automated test suite
+- **`USAGE_GUIDE.md`** - Detailed user guide with examples
+- **`IMPLEMENTATION_STEPS.md`** - Step-by-step development guide
+- **`IMPROVEMENTS_SUMMARY.md`** - Summary of enhancements made
+
+### Features Implemented
+
+✅ **All core requirements:**
+- Add new expense category with amount
+- Add to existing category (amounts accumulate)
+- Remove existing expense category
+- Update amount for existing category
+- View all expenses in formatted table
+- Save expenses to CSV file
+- Load expenses from CSV file at startup
+- Handle invalid inputs with clear error messages
+- Program loop until user chooses to exit
+
+✅ **Bonus feature:**
+- Total expenses summary displayed when viewing
+
+✅ **Additional enhancements:**
+- Professional formatted output with visual indicators
+- Context-aware operations (shows available categories)
+- Comprehensive input validation
+- Detailed user feedback for all operations
+- Sorted display for consistency
+- Robust error handling
 
 ### Technologies
 
 - Python 3.x
 - CSV file handling
+- Built-in modules: `csv`, `os`
+
+### Assignment Status
+
+🎉 **COMPLETE** - All requirements met and tested!
