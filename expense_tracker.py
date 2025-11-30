@@ -35,7 +35,7 @@ def main():
             
             # Validate category name
             if not category:
-                print("❌ Error: Category name cannot be empty.")
+                print("Error: Category name cannot be empty.")
                 continue
             
             # Get and validate amount
@@ -44,16 +44,16 @@ def main():
                 try:
                     amount = float(amount_input)
                     if amount < 0:
-                        print("❌ Error: Amount cannot be negative. Please try again.")
+                        print("Error: Amount cannot be negative. Please try again.")
                         continue
                     if amount == 0:
-                        print("⚠️  Warning: Amount is zero. Are you sure? (y/n): ", end="")
+                        print("Warning: Amount is zero. Are you sure? (y/n): ", end="")
                         confirm = input().strip().lower()
                         if confirm != 'y':
                             continue
                     break
                 except ValueError:
-                    print("❌ Error: Invalid number. Please enter a valid amount.")
+                    print("Error: Invalid number. Please enter a valid amount.")
             
             # Check if category exists and add expense
             category_existed = category in expenses
@@ -62,15 +62,15 @@ def main():
             add_expense(expenses, category, amount)
             
             if category_existed:
-                print(f"✅ Added ${amount:.2f} to '{category}'. New total: ${expenses[category]:.2f}")
+                print(f"Added ${amount:,.2f} to {category}. New total: ${expenses[category]:,.2f}")
             else:
-                print(f"✅ Created new category '{category}' with ${amount:.2f}")
+                print(f"Created new category {category} with ${amount:,.2f}")
 
         # Option 2: Remove Expense
         elif choice == '2':
             # Show current expenses first
             if not expenses:
-                print("\n❌ No expenses to remove.")
+                print("\nNo expenses to remove.")
                 continue
             
             print("\nCurrent expense categories:")
@@ -80,37 +80,37 @@ def main():
             category = input("\nEnter category to remove: ").strip()
             
             if not category:
-                print("❌ Error: Category name cannot be empty.")
+                print("Error: Category name cannot be empty.")
                 continue
             
             if remove_expense(expenses, category):
-                print(f"✅ Successfully removed '{category}'.")
+                print(f"Successfully removed {category}.")
             else:
-                print(f"❌ Category '{category}' not found.")
+                print(f"Category {category} not found.")
 
         # Option 3: Update Expense
         elif choice == '3':
             # Show current expenses first
             if not expenses:
-                print("\n❌ No expenses to update.")
+                print("\nNo expenses to update.")
                 continue
             
             print("\nCurrent expense categories:")
             for cat, amt in expenses.items():
-                print(f"  - {cat}: ${amt:.2f}")
+                print(f"  - {cat}: ${amt:,.2f}")
             
             category = input("\nEnter category to update: ").strip()
             
             if not category:
-                print("❌ Error: Category name cannot be empty.")
+                print("Error: Category name cannot be empty.")
                 continue
             
             # Check if category exists
             if category not in expenses:
-                print(f"❌ Category '{category}' not found.")
+                print(f"Category {category} not found.")
                 continue
             
-            print(f"Current amount for '{category}': ${expenses[category]:.2f}")
+            print(f"Current amount for '{category}': ${expenses[category]:,.2f}")
             
             # Get new amount
             while True:
@@ -118,17 +118,17 @@ def main():
                 try:
                     amount = float(amount_input)
                     if amount < 0:
-                        print("❌ Error: Amount cannot be negative. Please try again.")
+                        print("Error: Amount cannot be negative. Please try again.")
                         continue
                     break
                 except ValueError:
-                    print("❌ Error: Invalid number. Please enter a valid amount.")
+                    print("Error: Invalid number. Please enter a valid amount.")
             
             old_amount = expenses[category]
             if update_expense(expenses, category, amount):
-                print(f"✅ Updated '{category}' from ${old_amount:.2f} to ${amount:.2f}")
+                print(f"Updated {category} from ${old_amount:,.2f} to ${amount:,.2f}")
             else:
-                print(f"❌ Failed to update '{category}'.")
+                print(f"Failed to update {category}.")
 
         # Option 4: View Expenses
         elif choice == '4':
@@ -141,12 +141,12 @@ def main():
             print("\n" + "="*40)
             print("   Thank you for using Expense Tracker!")
             print("="*40)
-            print("Goodbye! 👋\n")
+            print("Goodbye!\n")
             break
 
         # Invalid choice
         else:
-            print("❌ Invalid choice. Please choose a number between 1-5.")
+            print("Invalid choice. Please choose a number between 1-5.")
 
 if __name__ == "__main__":
     main()

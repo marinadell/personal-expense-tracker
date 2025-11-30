@@ -30,22 +30,22 @@ def load_expenses(filename="expenses.csv"):
                     
                     # Skip empty categories
                     if not category:
-                        print(f"⚠️  Warning: Skipping empty category on line {row_num}.")
+                        print(f"Warning: Skipping empty category on line {row_num}.")
                         continue
                     
                     try:
                         amount_val = float(amount)
                         if amount_val < 0:
-                            print(f"⚠️  Warning: Skipping negative amount for '{category}' on line {row_num}.")
+                            print(f"Warning: Skipping negative amount for '{category}' on line {row_num}.")
                         else:
                             expenses[category] = amount_val
                     except ValueError:
-                        print(f"⚠️  Warning: Skipping invalid amount for '{category}' on line {row_num}.")
+                        print(f"Warning: Skipping invalid amount for '{category}' on line {row_num}.")
                 elif len(row) > 0:  # Non-empty row with wrong format
-                    print(f"⚠️  Warning: Skipping malformed row {row_num}.")
+                    print(f"Warning: Skipping malformed row {row_num}.")
     
     except Exception as e:
-        print(f"❌ Error reading file '{filename}': {e}")
+        print(f"Error reading file '{filename}': {e}")
         return {}
     
     return expenses
@@ -67,10 +67,10 @@ def save_expenses(expenses, filename="expenses.csv"):
             writer = csv.writer(file)
             for category, amount in sorted(expenses.items()):  # Sort for consistency
                 writer.writerow([category, amount])
-        print(f"✅ Expenses saved successfully to '{filename}'!")
+        print(f"Expenses saved successfully to '{filename}'!")
         return True
     except Exception as e:
-        print(f"❌ Error saving expenses: {e}")
+        print(f"Error saving expenses: {e}")
         return False
 
 
@@ -156,7 +156,7 @@ def view_expenses(expenses):
     """
     if not expenses:
         print("\n" + "="*40)
-        print("📝 No expenses recorded yet.")
+        print("No expenses recorded yet.")
         print("="*40 + "\n")
         return
 
